@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste de Upload CSV</title>
+  <link rel="stylesheet" href="/assets/css/upload.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Teste de Upload CSV</h1>
+
+    <form id="uploadForm">
+      <label for="arquivos">Selecione um ou mais arquivos CSV</label>
+
+      <input
+        type="file"
+        id="arquivos"
+        name="arquivos"
+        accept=".csv"
+        multiple
+      />
+
+      <div class="hint">
+        O campo enviado para a API se chama <strong>arquivos</strong>.
+      </div>
+
+      <button type="submit">Enviar arquivos</button>
+    </form>
+
+    <pre id="resultado">Aguardando envio...</pre>
+  </div>
+  <script src="/assets/js/upload.js"></script>
+</body>
+</html>

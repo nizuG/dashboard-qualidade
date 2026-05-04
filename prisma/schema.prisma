@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model ImportacaoCsv {
+  id             Int      @id @default(autoincrement())
+  nomeArquivo    String
+  competencia    String
+  municipio      String?
+  criadoEm       DateTime @default(now())
+
+  indicadores    IndicadorEquipe[]
+}
+
+model IndicadorEquipe {
+  id             Int      @id @default(autoincrement())
+
+  importacaoId   Int
+  importacao     ImportacaoCsv @relation(fields: [importacaoId], references: [id], onDelete: Cascade)
+
+  competencia    String
+  uf             String?
+  ibgeMunicipio  String?
+  nomeMunicipio  String?
+
+  cnes           String?
+  estabelecimento String?
+  ine            String?
+  nomeEquipe     String
+  siglaEquipe    String?
+
+  codigoIndicador String
+  nomeIndicador   String
+  grupoIndicador  String
+
+  valor           Float?
+  classificacao   String?
+
+  criadoEm        DateTime @default(now())
+
+  @@index([competencia])
+  @@index([nomeEquipe])
+  @@index([codigoIndicador])
+  @@index([competencia, nomeEquipe])
+}

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dashboard Comparativo de Indicadores</title>
+  <link rel="stylesheet" href="/assets/css/comparativo.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-icon">↔</div>
+        <div>
+          <h1>Dashboard Comparativo de Indicadores</h1>
+          <div class="subtitle">
+            Análise por equipe e por indicador — comparação entre competências
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="/home.html">Início</a>
+        <button class="btn btn-secondary" onclick="window.print()">Imprimir / PDF</button>
+        <button class="btn btn-primary" id="btnRecarregar">Atualizar dados</button>
+      </div>
+    </header>
+
+    <section class="filters-card">
+      <div class="filters-grid">
+        <div class="field">
+          <label for="competenciaA">Competência inicial</label>
+          <select id="competenciaA"></select>
+        </div>
+
+        <div class="field">
+          <label for="competenciaB">Competência final</label>
+          <select id="competenciaB"></select>
+        </div>
+
+        <div class="field">
+          <label for="busca">Buscar</label>
+          <input id="busca" type="text" placeholder="Equipe, indicador, estabelecimento..." />
+        </div>
+
+        <div class="field">
+          <label for="equipeSelect">Equipe</label>
+          <select id="equipeSelect">
+            <option value="">Todas as equipes</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="grupo">Grupo</label>
+          <select id="grupo">
+            <option value="">Todos</option>
+            <option value="Indicadores C">Indicadores C</option>
+            <option value="Saúde Bucal">Saúde Bucal</option>
+            <option value="eMulti">eMulti</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="">Todos</option>
+            <option value="subiu">Subiu</option>
+            <option value="caiu">Caiu</option>
+            <option value="estavel">Estável</option>
+            <option value="sem-dados">Sem dados</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" id="btnComparar">Comparar</button>
+      </div>
+    </section>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <div class="summary-icon azul">Σ</div>
+        <div>
+          <div id="totalComparados" class="summary-number">0</div>
+          <div class="summary-label">Indicadores comparados</div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon verde">↑</div>
+        <div>
+          <div id="totalSubiram" class="summary-number verde-text">0</div>
+          <div class="summary-label">Subiram</div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon vermelho">↓</div>
+        <div>
+          <div id="totalCairam" class="summary-number vermelho-text">0</div>
+          <div class="summary-label">Caíram</div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon cinza">=</div>
+        <div>
+          <div id="totalEstaveis" class="summary-number cinza-text">0</div>
+          <div class="summary-label">Estáveis</div>
+        </div>
+      </div>
+
+      <div class="summary-card">
+        <div class="summary-icon cinza">?</div>
+        <div>
+          <div id="totalSemDados" class="summary-number cinza-text">0</div>
+          <div class="summary-label">Sem dados</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights-grid">
+      <div class="card">
+        <h3 class="card-title">Maiores altas individuais</h3>
+        <div id="maioresAltas" class="rank-list"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Maiores quedas individuais</h3>
+        <div id="maioresQuedas" class="rank-list"></div>
+      </div>
+    </section>
+
+    <section class="section-header">
+      <h2>Detalhamento dos dados</h2>
+
+      <div class="view-toggle">
+        <button class="toggle-btn active" id="btnCards">Cards por equipe</button>
+        <button class="toggle-btn" id="btnTabela">Tabela</button>
+        <button class="toggle-btn" id="btnRelatorio">Relatório compacto</button>
+      </div>
+    </section>
+
+    <section id="cardsView" class="teams-list"></section>
+
+    <section id="tableView" class="table-card hidden">
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Equipe</th>
+              <th>Estabelecimento</th>
+              <th>Grupo</th>
+              <th>Indicador</th>
+              <th id="colA">Competência A</th>
+              <th>Classificação A</th>
+              <th id="colB">Competência B</th>
+              <th>Classificação B</th>
+              <th>Variação</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="tabelaComparativo">
+            <tr>
+              <td colspan="10">Carregando dados...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="reportView" class="report-view hidden"></section>
+  </div>
+
+  <script src="/assets/js/comparativo.js"></script>
+</body>
+</html>

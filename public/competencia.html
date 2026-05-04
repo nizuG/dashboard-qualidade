@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dashboard por Competência</title>
+  <link rel="stylesheet" href="/assets/css/competencia.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="header-left">
+        <div class="header-icon">📊</div>
+        <div>
+          <h1>Dashboard por Competência</h1>
+          <div class="subtitle">
+            Visualização de uma única competência, com notas por equipe e indicador.
+          </div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="/home.html">Início</a>
+        <button class="btn btn-secondary" onclick="window.print()">Imprimir / PDF</button>
+      </div>
+    </header>
+
+    <section class="filters-card">
+      <div class="filters-grid">
+        <div class="field">
+          <label for="competenciaSelect">Competência</label>
+          <select id="competenciaSelect"></select>
+        </div>
+
+        <div class="field">
+          <label for="equipeSelect">Equipe</label>
+          <select id="equipeSelect">
+            <option value="">Todas as equipes</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="grupoSelect">Grupo</label>
+          <select id="grupoSelect">
+            <option value="">Todos os grupos</option>
+            <option value="Indicadores C">Indicadores C</option>
+            <option value="Saúde Bucal">Saúde Bucal</option>
+            <option value="eMulti">eMulti</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" id="btnCarregar">Carregar</button>
+      </div>
+    </section>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <div id="totalEquipes" class="summary-number azul-text">0</div>
+        <div class="summary-label">Equipes</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalIndicadores" class="summary-number azul-text">0</div>
+        <div class="summary-label">Indicadores</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalOtimo" class="summary-number verde-text">0</div>
+        <div class="summary-label">Ótimo</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalBom" class="summary-number azul-text">0</div>
+        <div class="summary-label">Bom</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalSuficiente" class="summary-number amarelo-text">0</div>
+        <div class="summary-label">Suficiente</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalRegular" class="summary-number vermelho-text">0</div>
+        <div class="summary-label">Regular</div>
+      </div>
+    </section>
+
+    <section id="resultado"></section>
+  </div>
+
+  <script src="/assets/js/competencia.js"></script>
+</body>
+</html>

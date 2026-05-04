@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dashboard Qualidade APS</title>
+  <link rel="stylesheet" href="/assets/css/home.css" />
+</head>
+
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <div class="badge">Dashboard Qualidade APS</div>
+
+          <h1>Central de análise dos indicadores por competência</h1>
+
+          <div class="subtitle">
+            Importe arquivos CSV, visualize uma competência individualmente ou compare duas competências para acompanhar a evolução das equipes.
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/comparativo.html">↔ Comparar competências</a>
+            <a class="btn btn-secondary" href="/competencia.html">📊 Ver uma competência</a>
+            <a class="btn btn-secondary" href="/upload.html">⬆ Importar CSV</a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="status-card">
+        <div>
+          <div class="status-icon">📈</div>
+          <div class="status-title">Resumo do sistema</div>
+          <div class="status-text">
+            Os dados abaixo são carregados diretamente das importações salvas no PostgreSQL.
+          </div>
+        </div>
+
+        <div class="status-text" id="statusAtual">
+          Carregando informações...
+        </div>
+      </aside>
+    </section>
+
+    <section class="summary-grid">
+      <div class="summary-card">
+        <div id="totalImportacoes" class="summary-number">0</div>
+        <div class="summary-label">Importações</div>
+        <div class="summary-help">Arquivos CSV salvos</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="totalCompetencias" class="summary-number">0</div>
+        <div class="summary-label">Competências</div>
+        <div class="summary-help">Meses disponíveis</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="ultimaCompetencia" class="summary-number">—</div>
+        <div class="summary-label">Competência mais recente</div>
+        <div class="summary-help">Baseado em mês/ano, não na data de importação</div>
+      </div>
+
+      <div class="summary-card">
+        <div id="municipio" class="summary-number">—</div>
+        <div class="summary-label">Município</div>
+        <div class="summary-help">Origem dos dados</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Acessos rápidos</h2>
+
+    <section class="pages-grid">
+      <article class="page-card">
+        <div class="page-icon upload">⬆</div>
+        <div class="page-title">Importar CSV</div>
+        <div class="page-description">
+          Envie um ou mais arquivos CSV gerados pelo sistema. Os dados são lidos, tratados e salvos no banco PostgreSQL.
+        </div>
+        <a class="page-link" href="/upload.html">Abrir importação</a>
+      </article>
+
+      <article class="page-card">
+        <div class="page-icon competencia">📊</div>
+        <div class="page-title">Ver competência</div>
+        <div class="page-description">
+          Consulte uma única competência, veja as notas por equipe, classificação e indicadores separados por grupo.
+        </div>
+        <a class="page-link" href="/competencia.html">Abrir competência</a>
+      </article>
+
+      <article class="page-card">
+        <div class="page-icon comparativo">↔</div>
+        <div class="page-title">Comparar competências</div>
+        <div class="page-description">
+          Compare duas competências lado a lado, veja evolução por equipe, variações, maiores altas e maiores quedas.
+        </div>
+        <a class="page-link" href="/comparativo.html">Abrir comparativo</a>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <div class="card">
+        <h3 class="card-title">Competências importadas</h3>
+        <div id="listaImportacoes" class="import-list">
+          <div class="empty-state">Carregando importações...</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Fluxo sugerido de uso</h3>
+
+        <div class="tips">
+          <div class="tip">
+            <div class="tip-number">1</div>
+            <div class="tip-text">
+              Primeiro, importe os CSVs em <strong>Importar CSV</strong>.
+            </div>
+          </div>
+
+          <div class="tip">
+            <div class="tip-number">2</div>
+            <div class="tip-text">
+              Depois, confira uma competência isolada em <strong>Ver competência</strong>.
+            </div>
+          </div>
+
+          <div class="tip">
+            <div class="tip-number">3</div>
+            <div class="tip-text">
+              Por fim, compare dois meses em <strong>Comparar competências</strong> para analisar a evolução por equipe e indicador.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="/assets/js/home.js"></script>
+</body>
+</html>
